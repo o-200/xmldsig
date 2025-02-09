@@ -53,7 +53,7 @@ XML
 private_key = OpenSSL::PKey::RSA.new(File.read("key.pem"))
 certificate = OpenSSL::X509::Certificate.new(File.read("certificate.cer"))
 
-unsigned_document = Xmldsig::SignedDocument.new(unsigned_xml)
+unsigned_document = Xmldsig::SignedDocument.new(unsigned_xml) # use `force: true` param to rewrite existing signature
 signed_xml = unsigned_document.sign(private_key)
 
 # With block
